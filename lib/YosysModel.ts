@@ -33,6 +33,8 @@ namespace Yosys {
     export enum Direction {
         Input = 'input',
         Output = 'output',
+        Inout = 'inout',
+        
     }
 
     export interface ExtPort {
@@ -73,7 +75,7 @@ namespace Yosys {
     export function getOutputPortPids(cell: Cell): string[] {
         if (cell.port_directions) {
             return Object.keys(cell.port_directions).filter((k) => {
-                return cell.port_directions[k] === Direction.Output;
+                return cell.port_directions[k] === Direction.Output || cell.port_directions[k] === Direction.Inout;
             });
         }
         return [];

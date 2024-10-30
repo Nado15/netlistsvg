@@ -12,6 +12,7 @@ var Yosys;
     (function (Direction) {
         Direction["Input"] = "input";
         Direction["Output"] = "output";
+        Direction["Inout"] = "inout";
     })(Direction = Yosys.Direction || (Yosys.Direction = {}));
     function getInputPortPids(cell) {
         if (cell.port_directions) {
@@ -25,7 +26,8 @@ var Yosys;
     function getOutputPortPids(cell) {
         if (cell.port_directions) {
             return Object.keys(cell.port_directions).filter(function (k) {
-                return cell.port_directions[k] === Direction.Output;
+                console.log(k)
+                return cell.port_directions[k] === Direction.Output || cell.port_directions[k] === Direction.Inout;
             });
         }
         return [];
