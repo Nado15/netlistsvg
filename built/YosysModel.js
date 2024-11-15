@@ -26,7 +26,6 @@ var Yosys;
     function getOutputPortPids(cell) {
         if (cell.port_directions) {
             return Object.keys(cell.port_directions).filter(function (k) {
-                console.log(k)
                 return cell.port_directions[k] === Direction.Output || cell.port_directions[k] === Direction.Inout;
             });
         }
